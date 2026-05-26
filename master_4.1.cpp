@@ -8,22 +8,21 @@ int main() {
 
     HANDLE hStartEvent = CreateEvent(
         NULL, 
-        TRUE,  // сброс вручную
-        FALSE, // изначально занятое
+        TRUE,  // СЃР±СЂРѕСЃ РІСЂСѓС‡РЅСѓСЋ
+        FALSE, // РёР·РЅР°С‡Р°Р»СЊРЅРѕ Р·Р°РЅСЏС‚РѕРµ
         L"Global\\StartSimSignal"
     );
     if (hStartEvent == NULL) {
-        std::cerr << "Ошибка создания события: " << GetLastError() << std::endl;
+        std::cerr << "РћС€РёР±РєР° СЃРѕР·РґР°РЅРёСЏ СЃРѕР±С‹С‚РёСЏ: " << GetLastError() << std::endl;
         return 1;
     }
 
-    std::cout << "Нажмите ENTER для одновременного старта...";
+    std::cout << "РќР°Р¶РјРёС‚Рµ ENTER РґР»СЏ РѕРґРЅРѕРІСЂРµРјРµРЅРЅРѕРіРѕ СЃС‚Р°СЂС‚Р°...";
     std::cin.get();
-    if (SetEvent(hStartEvent)) std::cout << "Сигнал отправлен успешно! Все процессы начали работу.";
-    else std::cout << "Ошибка SetEvent: " << GetLastError() << std::endl;
+    if (SetEvent(hStartEvent)) std::cout << "РЎРёРіРЅР°Р» РѕС‚РїСЂР°РІР»РµРЅ СѓСЃРїРµС€РЅРѕ! Р’СЃРµ РїСЂРѕС†РµСЃСЃС‹ РЅР°С‡Р°Р»Рё СЂР°Р±РѕС‚Сѓ.";
+    else std::cout << "РћС€РёР±РєР° SetEvent: " << GetLastError() << std::endl;
     Sleep(2000);
     CloseHandle(hStartEvent);
 
     return 0;
 }
-
