@@ -19,6 +19,7 @@ int main() {
 
     std::cout << "Нажмите ENTER для одновременного старта...";
     std::cin.get();
+    // переводим событие в свободное состояние
     if (SetEvent(hStartEvent)) std::cout << "Сигнал отправлен успешно! Все процессы начали работу.";
     else std::cout << "Ошибка SetEvent: " << GetLastError() << std::endl;
     Sleep(2000);
